@@ -17,13 +17,13 @@ const MapComponent = ({ parcels }) => {
     ];
 
     const getParcelLayout = (index) => {
-        const cols = 4;
-        const width = 60;
-        const height = 40;
-        const gapX = 15;
-        const gapY = 15;
-        const startX = 10;
-        const startY = 10;
+        const cols = 3; // Reduced cols to fit better with gaps
+        const width = 80; // Wider cards
+        const height = 50; // Taller cards
+        const gapX = 20;
+        const gapY = 20;
+        const startX = 20;
+        const startY = 60; // Pushed down to avoid dropdown overlap
 
         const col = index % cols;
         const row = Math.floor(index / cols);
@@ -31,15 +31,16 @@ const MapComponent = ({ parcels }) => {
         const x = startX + col * (width + gapX);
         const y = startY + row * (height + gapY);
 
-        // Generate a slightly organic shape
-        const path = `M${x},${y} L${x + width},${y + 2} L${x + width - 2},${y + height} L${x + 3},${y + height - 3} Z`;
+        // Cleaner rectangle shape
+        const path = `M${x},${y} L${x + width},${y} L${x + width},${y + height} L${x},${y + height} Z`;
         const center = { x: x + width / 2, y: y + height / 2 };
 
         return { path, center };
     };
 
-    const rows = Math.ceil(filteredParcels.length / 4) || 1;
-    const viewBoxHeight = Math.max(120, rows * 60);
+    // Calculate height dynamically
+    const rows = Math.ceil(filteredParcels.length / 3) || 1;
+    const viewBoxHeight = Math.max(200, rows * 70 + 80); // Increased base height
 
     return (
         <div className="w-full bg-emerald-50 rounded-xl overflow-hidden shadow-inner border border-emerald-100 relative">
