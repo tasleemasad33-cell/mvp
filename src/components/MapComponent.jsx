@@ -62,12 +62,13 @@ const MapComponent = ({ parcels }) => {
                 <path d={`M0,${viewBoxHeight / 2} Q160,${viewBoxHeight} 320,${viewBoxHeight / 2}`} fill="none" stroke="#6ee7b7" strokeWidth="2" opacity="0.3" />
 
                 {filteredParcels.map((parcel, index) => {
-                    const layout = parcel.path ? { path: parcel.path, center: parcel.center } : getParcelLayout(index);
+                    // Always use generated layout to ensure no overlapping
+                    const layout = getParcelLayout(index);
 
                     return (
                         <g
-                            key={parcel._id || parcel.id}
-                            onClick={() => navigate(`/parcel/${parcel._id || parcel.id}`)}
+                            key={index}
+                            onClick={() => (parcel._id || parcel.id) && navigate(`/parcel/${parcel._id || parcel.id}`)}
                             className="group hover:opacity-90 transition-all duration-300"
                         >
                             <path
