@@ -44,7 +44,7 @@ const MapComponent = ({ parcels }) => {
     return (
         <div className="w-full bg-emerald-50 rounded-xl overflow-hidden shadow-inner border border-emerald-100 relative">
             <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur p-2 rounded-lg shadow text-xs text-gray-600 flex flex-col gap-2">
-                <span className="font-semibold">Live Farm Map</span>
+                <span className="font-semibold">Live Farm Map (Grid)</span>
                 <select
                     value={filter}
                     onChange={(e) => setFilter(e.target.value)}
