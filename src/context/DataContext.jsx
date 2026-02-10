@@ -35,7 +35,7 @@ export const DataProvider = ({ children }) => {
         };
 
         fetchData();
-    }, [user?.id]);
+    }, [user?._id, user]);
 
     const addParcel = async (parcelData) => {
         try {
