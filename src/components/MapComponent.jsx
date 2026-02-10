@@ -16,10 +16,35 @@ const MapComponent = ({ parcels }) => {
         { label: 'Action Required', color: '#fb923c' }
     ];
 
+    const getParcelLayout = (index) => {
+        const cols = 4;
+        const width = 60;
+        const height = 40;
+        const gapX = 15;
+        const gapY = 15;
+        const startX = 10;
+        const startY = 10;
+
+        const col = index % cols;
+        const row = Math.floor(index / cols);
+
+        const x = startX + col * (width + gapX);
+        const y = startY + row * (height + gapY);
+
+        // Generate a slightly organic shape
+        const path = `M${x},${y} L${x + width},${y + 2} L${x + width - 2},${y + height} L${x + 3},${y + height - 3} Z`;
+        const center = { x: x + width / 2, y: y + height / 2 };
+
+        return { path, center };
+    };
+
+    const rows = Math.ceil(filteredParcels.length / 4) || 1;
+    const viewBoxHeight = Math.max(120, rows * 60);
+
     return (
         <div className="w-full bg-emerald-50 rounded-xl overflow-hidden shadow-inner border border-emerald-100 relative">
             <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur p-2 rounded-lg shadow text-xs text-gray-600 flex flex-col gap-2">
-                <span className="font-semibold">Interactive Farm Map</span>
+                <span className="font-semibold">Live Farm Map</span>
                 <select
                     value={filter}
                     onChange={(e) => setFilter(e.target.value)}
@@ -32,47 +57,51 @@ const MapComponent = ({ parcels }) => {
                 </select>
             </div>
 
-            <svg viewBox="0 0 300 120" className="w-full h-auto cursor-pointer">
+            <svg viewBox={`0 0 320 ${viewBoxHeight}`} className="w-full h-auto cursor-pointer" style={{ minHeight: '200px' }}>
                 {/* Background Details */}
-                <path d="M0,60 Q150,120 300,60" fill="none" stroke="#6ee7b7" strokeWidth="2" opacity="0.3" />
+                <path d={`M0,${viewBoxHeight / 2} Q160,${viewBoxHeight} 320,${viewBoxHeight / 2}`} fill="none" stroke="#6ee7b7" strokeWidth="2" opacity="0.3" />
 
-                {filteredParcels.map((parcel) => (
-                    <g
-                        key={parcel._id || parcel.id}
-                        onClick={() => navigate(`/parcel/${parcel._id || parcel.id}`)}
-                        className="group hover:opacity-90 transition-all duration-300"
-                    >
-                        <path
-                            d={parcel.path}
-                            fill={parcel.color}
-                            stroke="white"
-                            strokeWidth="2"
-                            className="drop-shadow-md group-hover:drop-shadow-xl transition-all"
-                        />
-                        {/* Label inside parcel */}
-                        <text
-                            x={parcel.center.x}
-                            y={parcel.center.y}
-                            textAnchor="middle"
-                            fill="white"
-                            fontSize="8"
-                            fontWeight="bold"
-                            className="pointer-events-none drop-shadow-md"
+                {filteredParcels.map((parcel, index) => {
+                    const layout = parcel.path ? { path: parcel.path, center: parcel.center } : getParcelLayout(index);
+
+                    return (
+                        <g
+                            key={parcel._id || parcel.id}
+                            onClick={() => navigate(`/parcel/${parcel._id || parcel.id}`)}
+                            className="group hover:opacity-90 transition-all duration-300"
                         >
-                            {parcel.name}
-                        </text>
-                        <text
-                            x={parcel.center.x}
-                            y={parcel.center.y + 10}
-                            textAnchor="middle"
-                            fill="white"
-                            fontSize="6"
-                            className="pointer-events-none drop-shadow-sm opacity-0 group-hover:opacity-100 transition-opacity"
-                        >
-                            {parcel.crop}
-                        </text>
-                    </g>
-                ))}
+                            <path
+                                d={layout.path}
+                                fill={parcel.color || '#4ade80'}
+                                stroke="white"
+                                strokeWidth="2"
+                                className="drop-shadow-md group-hover:drop-shadow-xl transition-all"
+                            />
+                            {/* Label inside parcel */}
+                            <text
+                                x={layout.center.x}
+                                y={layout.center.y}
+                                textAnchor="middle"
+                                fill="white"
+                                fontSize="8"
+                                fontWeight="bold"
+                                className="pointer-events-none drop-shadow-md"
+                            >
+                                {parcel.name}
+                            </text>
+                            <text
+                                x={layout.center.x}
+                                y={layout.center.y + 10}
+                                textAnchor="middle"
+                                fill="white"
+                                fontSize="6"
+                                className="pointer-events-none drop-shadow-sm opacity-0 group-hover:opacity-100 transition-opacity"
+                            >
+                                {parcel.crop}
+                            </text>
+                        </g>
+                    )
+                })}
             </svg>
 
             {/* Legend */}
