@@ -7,26 +7,29 @@ import { KeyRound, Leaf, ArrowLeft, CheckCircle2 } from 'lucide-react';
 const ForgotPassword = () => {
     const { resetPassword } = useAuth();
     const navigate = useNavigate();
-    const [step, setStep] = useState(1); // 1: Email, 2: New Password, 3: Success
+    const [step, setStep] = useState(1); // 1: Email & Phone, 2: New Password, 3: Success
     const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
 
-    const handleEmailSubmit = (e) => {
+    const handleVerificationSubmit = (e) => {
         e.preventDefault();
-        // Check if user exists (simulated)
-        const users = JSON.parse(localStorage.getItem('farming_app_users') || '[]');
-        if (users.some(u => u.email === email)) {
+        // In a real app, we would verify existence here, but for security 
+        // we'll just move to the next step and let the final submission validate
+        if (email && phone) {
             setStep(2);
             setError('');
         } else {
-            setError('No account found with this email');
+            setError('Please enter both email and phone number');
         }
     };
 
-    const handlePasswordSubmit = (e) => {
+    const handlePasswordSubmit = async (e) => {
         e.preventDefault();
+        setError('');
+
         if (newPassword !== confirmPassword) {
             setError('Passwords do not match');
             return;
@@ -36,12 +39,13 @@ const ForgotPassword = () => {
             return;
         }
 
-        const result = resetPassword(email, newPassword);
+        const result = await resetPassword(email, phone, newPassword);
+
         if (result.success) {
             setStep(3);
             setError('');
         } else {
-            setError(result.message);
+            setError(result.message || 'Verification failed. Check your details.');
         }
     };
 
@@ -64,7 +68,7 @@ const ForgotPassword = () => {
                     {step === 3 && 'Password Reset!'}
                 </h1>
                 <p className="text-emerald-100 text-center mb-8">
-                    {step === 1 && 'Enter your email to reset your password'}
+                    {step === 1 && 'Enter your email and phone to verify identity'}
                     {step === 2 && 'Enter a strong new password for your account'}
                     {step === 3 && 'Your password has been successfully updated'}
                 </p>
@@ -76,7 +80,7 @@ const ForgotPassword = () => {
                 )}
 
                 {step === 1 && (
-                    <form onSubmit={handleEmailSubmit} className="space-y-4">
+                    <form onSubmit={handleVerificationSubmit} className="space-y-4">
                         <div>
                             <label className="block text-sm font-medium text-emerald-100 mb-1">Email Address</label>
                             <input
@@ -88,11 +92,22 @@ const ForgotPassword = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
+                        <div>
+                            <label className="block text-sm font-medium text-emerald-100 mb-1">Phone Number (for verification)</label>
+                            <input
+                                type="tel"
+                                required
+                                className="w-full bg-white/20 border border-white/30 rounded-xl px-4 py-2 text-white placeholder-emerald-200/50 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                                placeholder="+91 98765 43210"
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                            />
+                        </div>
                         <button
                             type="submit"
                             className="w-full bg-emerald-500 hover:bg-emerald-400 text-white font-bold py-3 rounded-xl transition-all shadow-lg hover:shadow-emerald-500/25 mt-2"
                         >
-                            Continue
+                            Verify & Continue
                         </button>
                     </form>
                 )}

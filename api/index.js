@@ -64,6 +64,28 @@ app.post('/api/auth/login', async (req, res) => {
     }
 });
 
+app.post('/api/auth/reset-password', async (req, res) => {
+    try {
+        const { email, phone, newPassword } = req.body;
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).send({ error: 'User not found with this email' });
+        }
+
+        if (user.phone !== phone) {
+            return res.status(401).send({ error: 'Phone number verification failed' });
+        }
+
+        user.password = newPassword;
+        await user.save(); // Pre-save hook will hash the password
+
+        res.send({ success: true, message: 'Password reset successfully' });
+    } catch (e) {
+        res.status(400).send({ error: e.message });
+    }
+});
+
 // --- PARCEL ROUTES ---
 
 app.get('/api/parcels', auth, async (req, res) => {

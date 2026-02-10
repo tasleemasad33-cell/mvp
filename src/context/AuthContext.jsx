@@ -52,9 +52,16 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('farming_token');
     };
 
-    const resetPassword = async (email, newPassword) => {
-        // Simple mock for now as we don't have a dedicated endpoint yet
-        return { success: false, message: 'Feature coming soon to secure backend' };
+    const resetPassword = async (email, phone, newPassword) => {
+        try {
+            await apiRequest('/auth/reset-password', {
+                method: 'POST',
+                body: JSON.stringify({ email, phone, newPassword })
+            });
+            return { success: true };
+        } catch (error) {
+            return { success: false, message: error.message };
+        }
     };
 
     return (
