@@ -1,7 +1,8 @@
 import React from 'react';
 import { Outlet, Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { LogOut, User, Sprout } from 'lucide-react';
+import { LogOut, User } from 'lucide-react';
+import logo from '../assets/logo.png';
 
 const Layout = () => {
     const { user, logout } = useAuth();
@@ -21,10 +22,10 @@ const Layout = () => {
             <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                        <div className="h-10 w-10 rounded-full bg-emerald-100 p-2 flex items-center justify-center">
-                            <Sprout className="h-6 w-6 text-emerald-600" />
+                        <div className="h-10 w-10 rounded-full bg-white p-0.5 flex items-center justify-center overflow-hidden border border-emerald-100">
+                            <img src={logo} alt="Agrilink Afrique" className="h-full w-full object-contain" />
                         </div>
-                        <span className="font-bold text-2xl text-emerald-800 tracking-tight">Farm-Connect</span>
+                        <span className="font-bold text-2xl text-emerald-800 tracking-tight">Agrilink Afrique</span>
                     </div>
                     <div className="flex items-center gap-4">
                         <div className="flex items-center gap-2 text-sm text-gray-600">

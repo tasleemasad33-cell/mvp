@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
-import { LogIn, Sprout } from 'lucide-react';
+import { LogIn } from 'lucide-react';
+import logo from '../assets/logo.png';
 
 const Login = () => {
     const { login } = useAuth();
@@ -32,12 +33,12 @@ const Login = () => {
         <div className="min-h-screen bg-gradient-to-br from-emerald-500 to-teal-900 flex items-center justify-center p-4">
             <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl shadow-xl max-w-md w-full text-white">
                 <div className="flex justify-center mb-6">
-                    <div className="h-16 w-16 rounded-full bg-white p-3 flex items-center justify-center">
-                        <Sprout className="h-10 w-10 text-emerald-600" />
+                    <div className="h-20 w-20 rounded-full bg-white p-1 flex items-center justify-center overflow-hidden border-2 border-emerald-500/20">
+                        <img src={logo} alt="Agrilink Afrique" className="h-full w-full object-contain" />
                     </div>
                 </div>
                 <h1 className="text-4xl font-extrabold text-center mb-2 tracking-tight">Bienvenue</h1>
-                <p className="text-emerald-100 text-center mb-8">Connectez-vous à votre compte Farm-Connect</p>
+                <p className="text-emerald-100 text-center mb-8">Connectez-vous à votre compte Agrilink Afrique</p>
 
                 {error && (
                     <div className="bg-red-500/20 border border-red-500/50 text-red-100 p-3 rounded-lg mb-4 text-sm text-center">
