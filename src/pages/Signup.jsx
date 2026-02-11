@@ -2,8 +2,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
-import { UserPlus } from 'lucide-react';
-import logo from '../assets/logo.png';
+import { UserPlus, Sprout } from 'lucide-react';
 
 const Signup = () => {
     const { register } = useAuth();
@@ -50,7 +49,9 @@ const Signup = () => {
         <div className="min-h-screen bg-gradient-to-br from-emerald-500 to-teal-900 flex items-center justify-center p-4">
             <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 rounded-2xl shadow-xl max-w-md w-full text-white">
                 <div className="flex justify-center mb-6">
-                    <img src={logo} alt="Logo" className="h-16 w-auto rounded-full bg-white p-1" />
+                    <div className="h-16 w-16 rounded-full bg-white p-3 flex items-center justify-center">
+                        <Sprout className="h-10 w-10 text-emerald-600" />
+                    </div>
                 </div>
                 <h2 className="text-4xl font-extrabold text-center mb-2 tracking-tight">Bienvenue</h2>
                 <p className="text-emerald-100 text-center mb-6">Rejoignez la communauté Farm-Connect</p>
