@@ -14,12 +14,12 @@ const Dashboard = () => {
     return (
         <div className="p-4 md:p-8">
             <div className="flex justify-between items-center mb-8">
-                <h1 className="text-3xl font-bold text-emerald-900">Farm Overview</h1>
+                <h1 className="text-3xl font-bold text-emerald-900">Vue d'ensemble de l'exploitation</h1>
                 <button
                     onClick={() => setIsModalOpen(true)}
                     className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors shadow-sm"
                 >
-                    <Plus className="w-4 h-4" /> Add Parcel
+                    <Plus className="w-4 h-4" /> Ajouter une parcelle
                 </button>
             </div>
 
@@ -28,7 +28,7 @@ const Dashboard = () => {
                 <div className="lg:col-span-2">
                     <div className="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100/50 mb-6">
                         <h2 className="text-xl font-bold text-emerald-800 mb-6 flex items-center gap-2">
-                            <MapPin className="text-emerald-500 w-5 h-5" /> Live Farm Map
+                            <MapPin className="text-emerald-500 w-5 h-5" /> Carte de l'exploitation en direct
                         </h2>
                         <MapComponent parcels={parcels} />
                     </div>
@@ -37,10 +37,10 @@ const Dashboard = () => {
                 {/* Quick List Section */}
                 <div className="lg:col-span-1">
                     <div className="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100/50 h-full">
-                        <h2 className="text-xl font-bold text-emerald-800 mb-6">Active Parcels</h2>
+                        <h2 className="text-xl font-bold text-emerald-800 mb-6">Parcelles actives</h2>
                         <div className="space-y-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
                             {parcels.length === 0 ? (
-                                <p className="text-gray-500 text-center py-4">No parcels added yet.</p>
+                                <p className="text-gray-500 text-center py-4">Aucune parcelle ajoutée pour le moment.</p>
                             ) : parcels.map(parcel => (
                                 <div
                                     key={parcel._id || parcel.id}
@@ -61,7 +61,7 @@ const Dashboard = () => {
                                                     <span>{parcel.location}</span>
                                                 </div>
                                             )}
-                                            <p className="text-xs text-gray-400">Planted: {parcel.plantingDate}</p>
+                                            <p className="text-xs text-gray-400">Planté : {parcel.plantingDate}</p>
                                         </div>
 
                                         <span className={`text-xs font-medium px-3 py-1 rounded-full ${parcel.status === 'Healthy' ? 'bg-green-100 text-green-700' :

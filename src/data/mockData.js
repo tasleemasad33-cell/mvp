@@ -2,9 +2,9 @@
 export const parcels = [
     {
         id: "p1",
-        name: "Riverside Plot",
+        name: "Parcelle riveraine",
         area: "2.4 Hectares",
-        crop: "Wheat",
+        crop: "Blé",
         variety: "HD 2967",
         plantingDate: "2024-11-05",
         harvestDate: "2025-04-15",
@@ -16,14 +16,14 @@ export const parcels = [
         location: "Ludhiana",
         soilPh: "6.8",
         soilOrganicMatter: "3.2",
-        soilTexture: "Loamy",
+        soilTexture: "Franc",
         ownerId: "farmer"
     },
     {
         id: "p2",
-        name: "Hilltop Field",
+        name: "Champ au sommet",
         area: "1.8 Hectares",
-        crop: "Mustard",
+        crop: "Moutarde",
         variety: "Pusa Bold",
         plantingDate: "2024-10-20",
         harvestDate: "2025-03-10",
@@ -35,14 +35,14 @@ export const parcels = [
         location: "Patiala",
         soilPh: "5.5",
         soilOrganicMatter: "1.8",
-        soilTexture: "Sandy",
+        soilTexture: "Sableux",
         ownerId: "farmer"
     },
     {
         id: "p3",
-        name: "Eastern Patch",
+        name: "Parcelle Est",
         area: "3.1 Hectares",
-        crop: "Sugarcane",
+        crop: "Canne à sucre",
         variety: "Co 0238",
         plantingDate: "2024-03-15",
         harvestDate: "2025-02-28",
@@ -54,7 +54,7 @@ export const parcels = [
         location: "Jalandhar",
         soilPh: "7.4",
         soilOrganicMatter: "2.5",
-        soilTexture: "Clay",
+        soilTexture: "Argileux",
         ownerId: "farmer"
     }
 ];
@@ -63,31 +63,31 @@ export const advisories = [
     {
         id: "a1",
         parcelId: "p1",
-        title: "Fertilizer Application",
+        title: "Application d'engrais",
         date: "2025-01-15",
         type: "fertilizer",
-        description: "Apply Urea at 40kg/acre for vegetative growth.",
+        description: "Appliquer de l'urée à 40kg/acre pour la croissance végétative.",
         confidence: "High",
-        source: "Agricultural University Ludhiana"
+        source: "Université agricole de Ludhiana"
     },
     {
         id: "a2",
         parcelId: "p1",
-        title: "Irrigation Alert",
+        title: "Alerte d'irrigation",
         date: "2025-01-20",
         type: "water",
-        description: "Light irrigation recommended due to dry spell.",
+        description: "Irrigation légère recommandée en raison de la période sèche.",
         confidence: "Medium",
-        source: "Weather Dept Forecast"
+        source: "Prévisions du service météo"
     },
     {
         id: "a3",
         parcelId: "p2",
-        title: "Pest Check",
+        title: "Contrôle des parasites",
         date: "2025-01-18",
         type: "health",
-        description: "Check for Aphids infestation in Mustard.",
+        description: "Vérifiez l'infestation de pucerons dans la moutarde.",
         confidence: "High",
-        source: "KVK Advisory"
+        source: "Conseil KVK"
     }
 ];

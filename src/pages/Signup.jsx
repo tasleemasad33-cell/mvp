@@ -25,7 +25,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (formData.password !== formData.confirmPassword) {
-            setError("Passwords do not match");
+            setError("Les mots de passe ne correspondent pas");
             return;
         }
 
@@ -53,8 +53,8 @@ const Signup = () => {
                         <Sprout className="w-8 h-8 text-emerald-600" />
                     </div>
                 </div>
-                <h2 className="text-4xl font-extrabold text-center mb-2 tracking-tight">Welcome</h2>
-                <p className="text-emerald-100 text-center mb-6">Join the Farm-Connect community</p>
+                <h2 className="text-4xl font-extrabold text-center mb-2 tracking-tight">Bienvenue</h2>
+                <p className="text-emerald-100 text-center mb-6">Rejoignez la communauté Farm-Connect</p>
 
                 {error && (
                     <div className="bg-red-500/20 border border-red-500/50 text-red-100 p-3 rounded-lg mb-4 text-sm text-center">
@@ -64,7 +64,7 @@ const Signup = () => {
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-emerald-100 mb-1">Full Name</label>
+                        <label className="block text-sm font-medium text-emerald-100 mb-1">Nom complet</label>
                         <input
                             type="text"
                             name="name"
@@ -77,7 +77,7 @@ const Signup = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-emerald-100 mb-1">Email Address</label>
+                        <label className="block text-sm font-medium text-emerald-100 mb-1">Adresse e-mail</label>
                         <input
                             type="email"
                             name="email"
@@ -90,7 +90,7 @@ const Signup = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-emerald-100 mb-1">Phone Number</label>
+                        <label className="block text-sm font-medium text-emerald-100 mb-1">Numéro de téléphone</label>
                         <input
                             type="tel"
                             name="phone"
@@ -103,7 +103,7 @@ const Signup = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-emerald-100 mb-1">Address</label>
+                        <label className="block text-sm font-medium text-emerald-100 mb-1">Adresse</label>
                         <input
                             type="text"
                             name="address"
@@ -117,14 +117,14 @@ const Signup = () => {
 
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-emerald-100 mb-1">Role</label>
+                            <label className="block text-sm font-medium text-emerald-100 mb-1">Rôle</label>
                             <select
                                 name="role"
                                 value={formData.role}
                                 onChange={handleChange}
                                 className="w-full bg-white/20 border border-white/30 rounded-xl px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-emerald-400 [&>option]:text-gray-900"
                             >
-                                <option value="farmer">Farmer</option>
+                                <option value="farmer">Agriculteur</option>
                                 <option value="institution">Institution</option>
                                 <option value="financier">Financier</option>
                             </select>
@@ -132,7 +132,7 @@ const Signup = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-emerald-100 mb-1">Password</label>
+                        <label className="block text-sm font-medium text-emerald-100 mb-1">Mot de passe</label>
                         <input
                             type="password"
                             name="password"
@@ -145,7 +145,7 @@ const Signup = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-emerald-100 mb-1">Confirm Password</label>
+                        <label className="block text-sm font-medium text-emerald-100 mb-1">Confirmer le mot de passe</label>
                         <input
                             type="password"
                             name="confirmPassword"
@@ -161,14 +161,14 @@ const Signup = () => {
                         type="submit"
                         className="w-full bg-emerald-500 hover:bg-emerald-400 text-white font-bold py-3 rounded-xl transition-all shadow-lg hover:shadow-emerald-500/25 mt-2"
                     >
-                        Sign Up
+                        S'inscrire
                     </button>
                 </form>
 
                 <p className="text-center mt-6 text-emerald-100 text-sm">
-                    Already have an account?{' '}
+                    Vous avez déjà un compte ?{' '}
                     <Link to="/login" className="font-bold hover:text-white underline decoration-2 decoration-emerald-400 underline-offset-4">
-                        Log In
+                        Se connecter
                     </Link>
                 </p>
             </div>

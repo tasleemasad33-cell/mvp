@@ -22,7 +22,7 @@ const ForgotPassword = () => {
             setStep(2);
             setError('');
         } else {
-            setError('Please enter both email and phone number');
+            setError('Veuillez entrer l\'e-mail et le numéro de téléphone');
         }
     };
 
@@ -31,11 +31,11 @@ const ForgotPassword = () => {
         setError('');
 
         if (newPassword !== confirmPassword) {
-            setError('Passwords do not match');
+            setError('Les mots de passe ne correspondent pas');
             return;
         }
         if (newPassword.length < 6) {
-            setError('Password must be at least 6 characters');
+            setError('Le mot de passe doit contenir au moins 6 caractères');
             return;
         }
 
@@ -45,7 +45,7 @@ const ForgotPassword = () => {
             setStep(3);
             setError('');
         } else {
-            setError(result.message || 'Verification failed. Check your details.');
+            setError(result.message || 'Échec de la vérification. Vérifiez vos informations.');
         }
     };
 
@@ -63,14 +63,14 @@ const ForgotPassword = () => {
                 </div>
 
                 <h1 className="text-3xl font-bold text-center mb-2">
-                    {step === 1 && 'Reset Password'}
-                    {step === 2 && 'Set New Password'}
-                    {step === 3 && 'Password Reset!'}
+                    {step === 1 && 'Réinitialiser le mot de passe'}
+                    {step === 2 && 'Définir un nouveau mot de passe'}
+                    {step === 3 && 'Mot de passe réinitialisé !'}
                 </h1>
                 <p className="text-emerald-100 text-center mb-8">
-                    {step === 1 && 'Enter your email and phone to verify identity'}
-                    {step === 2 && 'Enter a strong new password for your account'}
-                    {step === 3 && 'Your password has been successfully updated'}
+                    {step === 1 && 'Entrez votre e-mail et votre téléphone pour vérifier votre identité'}
+                    {step === 2 && 'Entrez un nouveau mot de passe fort pour votre compte'}
+                    {step === 3 && 'Votre mot de passe a été mis à jour avec succès'}
                 </p>
 
                 {error && (
@@ -82,7 +82,7 @@ const ForgotPassword = () => {
                 {step === 1 && (
                     <form onSubmit={handleVerificationSubmit} className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-emerald-100 mb-1">Email Address</label>
+                            <label className="block text-sm font-medium text-emerald-100 mb-1">Adresse e-mail</label>
                             <input
                                 type="email"
                                 required
@@ -93,7 +93,7 @@ const ForgotPassword = () => {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-emerald-100 mb-1">Phone Number (for verification)</label>
+                            <label className="block text-sm font-medium text-emerald-100 mb-1">Numéro de téléphone (pour vérification)</label>
                             <input
                                 type="tel"
                                 required
@@ -107,7 +107,7 @@ const ForgotPassword = () => {
                             type="submit"
                             className="w-full bg-emerald-500 hover:bg-emerald-400 text-white font-bold py-3 rounded-xl transition-all shadow-lg hover:shadow-emerald-500/25 mt-2"
                         >
-                            Verify & Continue
+                            Vérifier et continuer
                         </button>
                     </form>
                 )}
@@ -115,7 +115,7 @@ const ForgotPassword = () => {
                 {step === 2 && (
                     <form onSubmit={handlePasswordSubmit} className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-emerald-100 mb-1">New Password</label>
+                            <label className="block text-sm font-medium text-emerald-100 mb-1">Nouveau mot de passe</label>
                             <input
                                 type="password"
                                 required
@@ -126,7 +126,7 @@ const ForgotPassword = () => {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-emerald-100 mb-1">Confirm New Password</label>
+                            <label className="block text-sm font-medium text-emerald-100 mb-1">Confirmer le nouveau mot de passe</label>
                             <input
                                 type="password"
                                 required
@@ -140,7 +140,7 @@ const ForgotPassword = () => {
                             type="submit"
                             className="w-full bg-emerald-500 hover:bg-emerald-400 text-white font-bold py-3 rounded-xl transition-all shadow-lg hover:shadow-emerald-500/25 mt-2"
                         >
-                            Reset Password
+                            Réinitialiser le mot de passe
                         </button>
                     </form>
                 )}
@@ -150,7 +150,7 @@ const ForgotPassword = () => {
                         onClick={() => navigate('/login')}
                         className="w-full bg-emerald-500 hover:bg-emerald-400 text-white font-bold py-3 rounded-xl transition-all shadow-lg hover:shadow-emerald-500/25 mt-2"
                     >
-                        Go to Login
+                        Aller à la connexion
                     </button>
                 )}
 
@@ -160,7 +160,7 @@ const ForgotPassword = () => {
                         className="inline-flex items-center text-emerald-100 hover:text-white transition-colors text-sm"
                     >
                         <ArrowLeft className="w-4 h-4 mr-2" />
-                        Back to Login
+                        Retour à la connexion
                     </Link>
                 </div>
             </div>

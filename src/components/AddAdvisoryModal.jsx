@@ -24,7 +24,7 @@ const AddAdvisoryModal = ({ parcelId, onClose }) => {
             await addAdvisory({ ...formData, parcelId });
             onClose();
         } catch (error) {
-            alert("Failed to save event.");
+            alert("Échec de l'enregistrement de l'événement.");
         }
     };
 
@@ -33,7 +33,7 @@ const AddAdvisoryModal = ({ parcelId, onClose }) => {
             <div className="bg-white rounded-2xl w-full max-w-md p-6 shadow-xl animate-in fade-in zoom-in duration-200">
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-                        <Calendar className="text-emerald-500" /> Add Event / Advisory
+                        <Calendar className="text-emerald-500" /> Ajouter Événement / Conseil
                     </h2>
                     <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full text-gray-500">
                         <X className="w-5 h-5" />
@@ -42,7 +42,7 @@ const AddAdvisoryModal = ({ parcelId, onClose }) => {
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Event Title</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Titre de l'événement</label>
                         <input type="text" name="title" required className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500" placeholder="e.g. Pest Check" onChange={handleChange} />
                     </div>
 
@@ -54,21 +54,21 @@ const AddAdvisoryModal = ({ parcelId, onClose }) => {
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Type</label>
                             <select name="type" className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500" value={formData.type} onChange={handleChange}>
-                                <option value="fertilizer">Fertilizer</option>
+                                <option value="fertilizer">Engrais</option>
                                 <option value="water">Irrigation</option>
-                                <option value="health">Health Check</option>
-                                <option value="harvest">Harvest</option>
+                                <option value="health">Bilan de santé</option>
+                                <option value="harvest">Récolte</option>
                             </select>
                         </div>
                     </div>
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                        <textarea name="description" required rows="3" className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500" placeholder="Details about this event..." onChange={handleChange}></textarea>
+                        <textarea name="description" required rows="3" className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500" placeholder="Détails sur cet événement..." onChange={handleChange}></textarea>
                     </div>
 
                     <button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition-colors mt-2">
-                        Save Event
+                        Enregistrer l'événement
                     </button>
                 </form>
             </div>

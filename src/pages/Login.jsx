@@ -36,8 +36,8 @@ const Login = () => {
                         <Sprout className="w-8 h-8 text-emerald-600" />
                     </div>
                 </div>
-                <h1 className="text-4xl font-extrabold text-center mb-2 tracking-tight">Welcome</h1>
-                <p className="text-emerald-100 text-center mb-8">Log in to your Farm-Connect account</p>
+                <h1 className="text-4xl font-extrabold text-center mb-2 tracking-tight">Bienvenue</h1>
+                <p className="text-emerald-100 text-center mb-8">Connectez-vous à votre compte Farm-Connect</p>
 
                 {error && (
                     <div className="bg-red-500/20 border border-red-500/50 text-red-100 p-3 rounded-lg mb-4 text-sm text-center">
@@ -47,7 +47,7 @@ const Login = () => {
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-emerald-100 mb-1">Email Address</label>
+                        <label className="block text-sm font-medium text-emerald-100 mb-1">Adresse e-mail</label>
                         <input
                             type="email"
                             name="email"
@@ -60,7 +60,7 @@ const Login = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-emerald-100 mb-1">Password</label>
+                        <label className="block text-sm font-medium text-emerald-100 mb-1">Mot de passe</label>
                         <input
                             type="password"
                             name="password"
@@ -77,7 +77,7 @@ const Login = () => {
                             to="/forgot-password"
                             className="text-sm text-emerald-100 hover:text-white transition-colors"
                         >
-                            Forgot Password?
+                            Mot de passe oublié ?
                         </Link>
                     </div>
 
@@ -85,14 +85,14 @@ const Login = () => {
                         type="submit"
                         className="w-full bg-emerald-500 hover:bg-emerald-400 text-white font-bold py-3 rounded-xl transition-all shadow-lg hover:shadow-emerald-500/25 mt-2"
                     >
-                        Log In
+                        Se connecter
                     </button>
                 </form>
 
                 <p className="text-center mt-6 text-emerald-100 text-sm">
-                    Don't have an account?{' '}
+                    Vous n'avez pas de compte ?{' '}
                     <Link to="/signup" className="font-bold hover:text-white underline decoration-2 decoration-emerald-400 underline-offset-4">
-                        Sign Up
+                        S'inscrire
                     </Link>
                 </p>
             </div>

@@ -4,7 +4,7 @@ import { getAIModelResponse } from '../services/aiService';
 
 const ChatInterface = ({ parcel }) => {
     const [messages, setMessages] = useState([
-        { id: 1, type: 'bot', text: parcel ? `Hello! I can help you with insights for your ${parcel.crop} field in ${parcel.location || 'your area'}. Ask me anything!` : "Hello! I am your AI farm assistant. How can I help you today?" }
+        { id: 1, type: 'bot', text: parcel ? `Bonjour ! Je peux vous aider avec des informations pour votre champ de ${parcel.crop} à ${parcel.location || 'votre région'}. Demandez-moi n'importe quoi !` : "Bonjour ! Je suis votre assistant agricole IA. Comment puis-je vous aider aujourd'hui ?" }
     ]);
     const [input, setInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
@@ -20,11 +20,11 @@ const ChatInterface = ({ parcel }) => {
         setIsTyping(true);
 
         const analysisSteps = [
-            "Connecting to Planet-Scale Satellite APIs...",
-            `Retrieving real-time weather for ${parcel?.location || 'your area'}...`,
-            `Processing ${parcel?.soilTexture || 'soil'} structural data...`,
-            "Running agronomic growth model...",
-            "Finalizing recommendation..."
+            "Connexion aux API satellites à l'échelle planétaire...",
+            `Récupération de la météo en temps réel pour ${parcel?.location || 'votre région'}...`,
+            `Traitement des données structurelles du sol (${parcel?.soilTexture || 'sol'})...`,
+            "Exécution du modèle de croissance agronomique...",
+            "Finalisation de la recommandation..."
         ];
 
         let stepIdx = 0;
@@ -67,10 +67,10 @@ const ChatInterface = ({ parcel }) => {
                         <Bot className="w-5 h-5 text-emerald-600" />
                     </div>
                     <div>
-                        <h3 className="font-bold text-gray-800">Farm Assistant AI</h3>
+                        <h3 className="font-bold text-gray-800">Assistant Agricole IA</h3>
                         <div className="flex items-center gap-1.5">
                             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                            <span className="text-xs text-gray-500">Online • Context Aware</span>
+                            <span className="text-xs text-gray-500">En ligne • Conscient du contexte</span>
                         </div>
                     </div>
                 </div>
@@ -113,16 +113,16 @@ const ChatInterface = ({ parcel }) => {
             <div className="p-4 border-t border-gray-100">
                 {/* Quick Prompts */}
                 <div className="flex gap-2 overflow-x-auto pb-3 mb-2 scrollbar-hide">
-                    <button onClick={() => setInput("Why plant now?")} className="whitespace-nowrap px-3 py-1 bg-emerald-50 text-emerald-700 text-xs rounded-full border border-emerald-100 hover:bg-emerald-100 transition-colors">
-                        Why plant now?
+                    <button onClick={() => setInput("Pourquoi planter maintenant ?")} className="whitespace-nowrap px-3 py-1 bg-emerald-50 text-emerald-700 text-xs rounded-full border border-emerald-100 hover:bg-emerald-100 transition-colors">
+                        Pourquoi planter maintenant ?
                     </button>
                     {parcel && (
-                        <button onClick={() => setInput("Check crop status")} className="whitespace-nowrap px-3 py-1 bg-emerald-50 text-emerald-700 text-xs rounded-full border border-emerald-100 hover:bg-emerald-100 transition-colors">
-                            Check crop status
+                        <button onClick={() => setInput("Vérifier le statut de la culture")} className="whitespace-nowrap px-3 py-1 bg-emerald-50 text-emerald-700 text-xs rounded-full border border-emerald-100 hover:bg-emerald-100 transition-colors">
+                            Vérifier le statut de la culture
                         </button>
                     )}
-                    <button onClick={() => setInput("Weather forecast?")} className="whitespace-nowrap px-3 py-1 bg-emerald-50 text-emerald-700 text-xs rounded-full border border-emerald-100 hover:bg-emerald-100 transition-colors">
-                        Weather forecast?
+                    <button onClick={() => setInput("Prévisions météo ?")} className="whitespace-nowrap px-3 py-1 bg-emerald-50 text-emerald-700 text-xs rounded-full border border-emerald-100 hover:bg-emerald-100 transition-colors">
+                        Prévisions météo ?
                     </button>
                 </div>
 
@@ -132,7 +132,7 @@ const ChatInterface = ({ parcel }) => {
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                        placeholder={parcel ? `Ask about ${parcel.crop}...` : "Ask about your farm..."}
+                        placeholder={parcel ? `Demandez à propos de ${parcel.crop}...` : "Demandez à propos de votre ferme..."}
                         className="flex-1 px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium"
                     />
                     <button

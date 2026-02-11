@@ -22,7 +22,7 @@ export const apiRequest = async (endpoint, options = {}) => {
 
     if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.error || 'Something went wrong');
+        throw new Error(error.error || 'Quelque chose s\'est mal passé');
     }
 
     return response.json();

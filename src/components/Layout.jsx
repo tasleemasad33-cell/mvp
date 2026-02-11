@@ -31,7 +31,7 @@ const Layout = () => {
                             <User className="w-4 h-4" />
                             <span>{user.name} ({user.role})</span>
                         </div>
-                        <button onClick={handleLogout} className="p-2 hover:bg-gray-100 rounded-full text-gray-500" title="Logout">
+                        <button onClick={handleLogout} className="p-2 hover:bg-gray-100 rounded-full text-gray-500" title="Déconnexion">
                             <LogOut className="w-5 h-5" />
                         </button>
                     </div>

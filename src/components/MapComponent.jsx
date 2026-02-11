@@ -45,16 +45,16 @@ const MapComponent = ({ parcels }) => {
     return (
         <div className="w-full bg-emerald-50 rounded-xl overflow-hidden shadow-inner border border-emerald-100 relative">
             <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur p-2 rounded-lg shadow text-xs text-gray-600 flex flex-col gap-2">
-                <span className="font-semibold">Live Farm Map (Grid)</span>
+                <span className="font-semibold">Carte de l'exploitation en direct (Grille)</span>
                 <select
                     value={filter}
                     onChange={(e) => setFilter(e.target.value)}
                     className="bg-white border border-emerald-100 rounded px-2 py-1 text-xs outline-none focus:ring-1 focus:ring-emerald-500"
                 >
-                    <option value="All">Show All</option>
-                    <option value="Healthy">Healthy</option>
-                    <option value="Attention Needed">Attention Needed</option>
-                    <option value="Ready for Harvest">Ready for Harvest</option>
+                    <option value="All">Tout afficher</option>
+                    <option value="Healthy">Sain</option>
+                    <option value="Attention Needed">Attention requise</option>
+                    <option value="Ready for Harvest">Prêt pour la récolte</option>
                 </select>
             </div>
 
@@ -110,15 +110,15 @@ const MapComponent = ({ parcels }) => {
             <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur px-3 py-2 rounded-lg shadow-sm flex items-center gap-4 text-[10px] text-gray-600">
                 <div className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-green-400"></span>
-                    <span>Healthy</span>
+                    <span>Sain</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
-                    <span>Warning</span>
+                    <span>Avertissement</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 rounded-full bg-orange-400"></span>
-                    <span>Action Required</span>
+                    <span>Action requise</span>
                 </div>
             </div>
         </div>

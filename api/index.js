@@ -31,7 +31,7 @@ const auth = async (req, res, next) => {
         req.user = user;
         next();
     } catch (e) {
-        res.status(401).send({ error: 'Please authenticate.' });
+        res.status(401).send({ error: 'Veuillez vous authentifier.' });
     }
 };
 
@@ -45,7 +45,7 @@ app.post('/api/auth/register', async (req, res) => {
         res.status(201).send({ user, token });
     } catch (e) {
         if (e.code === 11000) {
-            return res.status(400).send({ error: 'Email already registered' });
+            return res.status(400).send({ error: 'Email déjà enregistré' });
         }
         res.status(400).send({ error: e.message });
     }
@@ -55,7 +55,7 @@ app.post('/api/auth/login', async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email });
         if (!user || !(await user.comparePassword(req.body.password))) {
-            return res.status(401).send({ error: 'Invalid login credentials' });
+            return res.status(401).send({ error: 'Identifiants de connexion invalides' });
         }
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET || 'yoursecretkey');
         res.send({ user, token });
@@ -70,17 +70,17 @@ app.post('/api/auth/reset-password', async (req, res) => {
         const user = await User.findOne({ email });
 
         if (!user) {
-            return res.status(404).send({ error: 'User not found with this email' });
+            return res.status(404).send({ error: 'Utilisateur non trouvé avec cet email' });
         }
 
         if (user.phone !== phone) {
-            return res.status(401).send({ error: 'Phone number verification failed' });
+            return res.status(401).send({ error: 'La vérification du numéro de téléphone a échoué' });
         }
 
         user.password = newPassword;
         await user.save(); // Pre-save hook will hash the password
 
-        res.send({ success: true, message: 'Password reset successfully' });
+        res.send({ success: true, message: 'Mot de passe réinitialisé avec succès' });
     } catch (e) {
         res.status(400).send({ error: e.message });
     }

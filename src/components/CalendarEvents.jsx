@@ -17,7 +17,7 @@ const CalendarEvents = ({ parcelId }) => {
     };
 
     if (events.length === 0) {
-        return <div className="text-gray-400 text-sm text-center py-8">No planned activities.</div>;
+        return <div className="text-gray-400 text-sm text-center py-8">Aucune activité planifiée.</div>;
     }
 
     return (
@@ -43,7 +43,7 @@ const CalendarEvents = ({ parcelId }) => {
                                 </span>
                                 {event.confidence && (
                                     <span className="text-xs text-gray-400">
-                                        Confidence: {event.confidence}
+                                        Confiance : {event.confidence}
                                     </span>
                                 )}
                             </div>
@@ -52,14 +52,14 @@ const CalendarEvents = ({ parcelId }) => {
                         <div className="flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                             <button
                                 onClick={() => toggleAdvisoryStatus(event._id || event.id)}
-                                title={event.status === 'completed' ? "Mark as Pending" : "Mark as Done"}
+                                title={event.status === 'completed' ? "Marquer comme en attente" : "Marquer comme fait"}
                                 className="p-1 hover:bg-emerald-50 rounded-full text-emerald-600 transition-colors"
                             >
                                 {event.status === 'completed' ? <CheckCircle2 className="w-5 h-5" /> : <Circle className="w-5 h-5" />}
                             </button>
                             <button
-                                onClick={() => { if (window.confirm('Delete this event?')) deleteAdvisory(event._id || event.id) }}
-                                title="Delete Event"
+                                onClick={() => { if (window.confirm('Supprimer cet événement ?')) deleteAdvisory(event._id || event.id) }}
+                                title="Supprimer l'événement"
                                 className="p-1 hover:bg-red-50 rounded-full text-red-400 hover:text-red-500 transition-colors"
                             >
                                 <Trash2 className="w-4 h-4" />
